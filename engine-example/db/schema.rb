@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_27_020004) do
+ActiveRecord::Schema.define(version: 2021_12_27_034342) do
 
   create_table "master_areas", force: :cascade do |t|
     t.string "name"
@@ -18,4 +18,13 @@ ActiveRecord::Schema.define(version: 2021_12_27_020004) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "master_prefectures", force: :cascade do |t|
+    t.integer "area_id"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["area_id"], name: "index_master_prefectures_on_area_id"
+  end
+
+  add_foreign_key "master_prefectures", "master_areas", column: "area_id"
 end
