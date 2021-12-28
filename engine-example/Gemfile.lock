@@ -3,6 +3,7 @@ PATH
   specs:
     admin (0.1.0)
       rails (~> 6.1)
+      webpacker (~> 5.0)
 
 PATH
   remote: engines/client
