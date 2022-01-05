@@ -37,6 +37,7 @@
 /public/packs
 /public/packs-test
 /public/admin-packs
+/public/client-packs
 /node_modules
 /yarn-error.log
 yarn-debug.log*
