@@ -1,3 +1,6 @@
+require 'webpacker'
+require 'devise'
+
 module Admin
   class Engine < ::Rails::Engine
     isolate_namespace Admin
@@ -21,6 +24,10 @@ module Admin
       Rack::Static,
       urls: ["/admin-packs"], root: "engines/admin/public"
     )
+
+    config.to_prepare do
+      Devise::SessionsController.layout "admin/sessions"
+    end
 
     config.generators do |g|
       g.javascripts false

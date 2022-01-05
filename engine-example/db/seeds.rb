@@ -70,3 +70,9 @@ prefectures = [
   {id: 47, area_id: 8, name: '沖縄県',   created_at: timestamp, updated_at: timestamp}
 ]
 Master::Prefecture.insert_all(prefectures)
+
+AdminUser.find_or_initialize_by(email: 'admin@example.com') do | admin_user |
+  admin_user.password = 'administrator'
+  admin_user.name = '管理者'
+  admin_user.save!
+end

@@ -14,11 +14,12 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'd9ea77d45f62711a81e21da6683e55a9bf3e1cafde68bd906f6a25fd363870e385a352b1275b6b2d7247e719c90da6ed0cfc962c7c1e35570c510b2403f10146'
+  # config.secret_key = 'f50f2489e6e7e5f4981fb4421a294ee7040bfddb35b7b488ecc50d8be15b69cd34bb00be6fd07dfed538013b52c39359c43abb57a44e497b8b57c0be01213204'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
+  config.parent_controller = 'Admin::ApplicationController'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -126,7 +127,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '7ab3766cc35350d4fd6004e4318c42d83184538b3af08642519e5c0ec8377b456f70a542650fae128f1b3ba76fc3094f563509eb3e153a4ee062e39a82f958de'
+  # config.pepper = '24b5e8d31ec6a2e23e8ce16e073913c96283fabddbaa82e6f0e39156e989f0884136b597a36ce24eea2d6bfab0f7fb6af6d27f05d09fec3ef74e838d08469c7b'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -250,6 +251,7 @@ Devise.setup do |config|
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
   # config.default_scope = :user
+  # config.default_scope = :admin_user
 
   # Set this configuration to false if you want /users/sign_out to sign out
   # only the current scope. By default, Devise signs out all scopes.
@@ -292,7 +294,7 @@ Devise.setup do |config|
   #     mount MyEngine, at: '/my_engine'
   #
   # The router that invoked `devise_for`, in the example above, would be:
-  # config.router_name = :my_engine
+  config.router_name = :admin
   #
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
