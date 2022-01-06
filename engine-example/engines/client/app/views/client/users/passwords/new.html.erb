@@ -1,0 +1,37 @@
+<section class="intro">
+  <div class="mask d-flex align-items-center h-100" style="background-color: #D6D6D6;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+
+              <div class="my-md-5 pb-5">
+
+                <h1 class="fw-bold mb-0">Forgot your password?</h1>
+
+                <i class="fas fa-user-astronaut fa-3x my-5"></i>
+
+                <%= form_for(resource, as: resource_name, url: password_path(resource_name)) do |f| %>
+                  <%= render "client/users/shared/error_messages", resource: resource %>
+                  <div class="form-outline mb-4">
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-control-lg', placeholder: 'Email' %>
+                  </div>
+
+                  <%= button_tag "Request new password", class: 'btn btn-primary btn-lg btn-rounded text-body px-5' %>
+                <% end %>
+              </div>
+
+              <div>
+                <p class="mb-0">
+                  <%= render "client/users/shared/links" %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

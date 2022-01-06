@@ -1,3 +1,6 @@
+require 'webpacker'
+require 'devise'
+
 module Client
   class Engine < ::Rails::Engine
     isolate_namespace Client
@@ -21,6 +24,10 @@ module Client
       Rack::Static,
       urls: ["/client-packs"], root: "client/public"
     )
+
+    config.to_prepare do
+      Devise::SessionsController.layout "client/sessions"
+    end
 
     config.generators do |g|
       g.javascripts false

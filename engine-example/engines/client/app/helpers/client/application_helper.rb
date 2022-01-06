@@ -1,3 +1,5 @@
+require "webpacker/helper"
+
 module Client
   module ApplicationHelper
     include ::Webpacker::Helper
