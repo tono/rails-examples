@@ -1,0 +1,32 @@
+<div class="w-75">
+  <legend>
+    <h2 class="d-inline">カテゴリー</h2>
+    <p class="float-end">
+      <%= link_to '新規作成', new_category_path, class: 'btn btn-success' %>
+    </p>
+  </legend>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th width="10%">#</th>
+        <th scope="col">カテゴリー名</th>
+        <th scope="col" width="20%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |c| %>
+        <tr>
+          <th scope="row"><%= c.id %></th>
+          <td><%= c.name %></td>
+          <td class="text-center">
+            <%= link_to '更新', edit_category_path(c), class: 'btn btn-info' %>
+            <%= link_to_unless c.tasks.exists?, '削除', c, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-danger ms-3' do %>
+              <%= link_to '削除', '#', class: 'btn btn-danger  disabled ms-3', 'aria-disabled': 'true' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

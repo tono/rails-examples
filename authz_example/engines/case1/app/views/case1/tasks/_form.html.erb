@@ -1,0 +1,31 @@
+<%= form_with(model: task) do |form| %>
+  <% if task.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <ul>
+        <% task.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :category_id, 'カテゴリー', class: 'form-label' %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, {}, {class: 'form-select'} %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :title, 'タイトル', class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :content, '内容', class: 'form-label' %>
+    <%= form.text_area :content, class: 'form-control', rows: '5' %>
+  </div>
+
+  <div>
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
+

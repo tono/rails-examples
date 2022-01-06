@@ -1,0 +1,21 @@
+  <div class="form-signin">
+    <%= form_with model: @user_session, url: user_sessions_path do |f| %>
+      <h1 class="h3 mb-5 fw-normal text-center">サインイン</h1>
+
+      <div class="form-floating">
+        <%= f.text_field :email, class: 'form-control', placeholder: 'name@example.com' %>
+        <%= f.label :email, 'Email' %>
+      </div>
+      <div class="form-floating">
+        <%= f.password_field :password, class: 'form-control', placeholder: 'パスワード' %>
+        <%= f.label :password, 'パスワード' %>
+      </div>
+
+      <div class="form-check mb-5">
+        <%= f.check_box :remember_me, class: 'form-check-input' %>
+        <%= f.label :remember_me, 'ログイン状態を記憶する', class: 'form-check-label' %>
+      </div>
+
+      <%= f.submit 'サインイン', class: 'w-100 btn btn-lg btn-primary' %>
+    <% end %>
+  </div>

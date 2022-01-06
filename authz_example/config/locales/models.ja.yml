@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      task: タスク
+      category: カテゴリー
+    attributes:
+      user:
+        email: Eメール
+        password: パスワード
+        name: 名前
+      task:
+        category_id: カテゴリー
+        title: タイトル
+        content: 内容
+      category:
+        name: カテゴリー名

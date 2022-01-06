@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AuthZ Example Case1</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <style>
+      .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 100; /* ナビゲーションバーの背面 */
+        padding: 48px 0 0; /* ナビゲーションバーの高さ */
+        box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+      }
+
+      @media (max-width: 767.98px) {
+        .sidebar {
+          top: 5rem;
+        }
+      }
+
+      .sidebar-sticky {
+        position: relative;
+        top: 0;
+        height: calc(100vh - 48px);
+        padding-top: .5rem;
+        overflow-x: hidden;
+        overflow-y: auto; /* ビューポートがコンテンツより短い場合、スクロール可能なコンテンツ */
+      }
+
+      .sidebar .nav-link {
+        font-weight: 500;
+        color: #333;
+      }
+
+      .sidebar .nav-link .feather {
+        margin-right: 4px;
+        color: #727272;
+      }
+
+      .sidebar .nav-link.active {
+        color: #2470dc;
+      }
+
+      .sidebar .nav-link:hover .feather,
+      .sidebar .nav-link.active .feather {
+        color: inherit;
+      }
+
+      .sidebar-heading {
+        font-size: .75rem;
+        text-transform: uppercase;
+      }
+
+      /*
+       * ナビゲーションバー
+       */
+
+      .navbar-brand {
+        padding-top: .75rem;
+        padding-bottom: .75rem;
+        font-size: 1rem;
+        background-color: rgba(0, 0, 0, .25);
+        box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+      }
+
+      .navbar .navbar-toggler {
+        top: .25rem;
+        right: 1rem;
+      }
+
+      .navbar .form-control {
+        padding: .75rem 1rem;
+        border-width: 0;
+        border-radius: 0;
+      }
+
+      .form-control-dark {
+        color: #fff;
+        background-color: rgba(255, 255, 255, .1);
+        border-color: rgba(255, 255, 255, .1);
+      }
+
+      .form-control-dark:focus {
+        border-color: transparent;
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+      }
+    </style>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="d-flex flex-column h-100">
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+      <div class="container-fluid">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">AuthZ Example Case1</a>
+        <div class="navbar-nav">
+          <div class="nav-item text-nowrap">
+            <%= link_to 'サインアウト', sign_out_path, method: :delete, class: 'nav-link px-3' %>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <%= link_to root_path, class: "nav-link #{'active' if current_page?(root_path)}", 'aria-current': 'page' do %>
+                  <span data-feather="home"></span>
+                  ダッシュボード
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to tasks_path, class: "nav-link #{'active' if current_page?(tasks_path)}" do %>
+                  <span data-feather="check-square"></span>
+                  タスク
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to categories_path, class: "nav-link #{'active' if current_page?(categories_path)}" do %>
+                  <span data-feather="star"></span>
+                  カテゴリー
+                <% end%>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
+

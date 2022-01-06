@@ -1,0 +1,35 @@
+<div class="w-75">
+  <legend>
+    <h2 class="d-inline">タスク</h2>
+    <p class="float-end">
+      <%= link_to '新規作成', new_task_path, class: 'btn btn-success' %>
+    </p>
+  </legend>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th width="5%">#</th>
+        <th width="10%">カテゴリー</th>
+        <th scope="col" width="20%">タイトル</th>
+        <th scope="col">内容</th>
+        <th scope="col" width="15%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <th scope="row"><%= task.id %></th>
+          <td><%= task.category.name %></td>
+          <td><%= task.title %></td>
+          <td><%= simple_format task.content %></td>
+          <td class="text-center">
+            <%= link_to '更新', edit_task_path(task), class: 'btn btn-info' %>
+            <%= link_to '削除', task, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-danger ms-3' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
