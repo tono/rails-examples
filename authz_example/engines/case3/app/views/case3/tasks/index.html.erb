@@ -25,7 +25,9 @@
           <td><%= simple_format task.content %></td>
           <td class="text-center">
             <%= link_to '更新', edit_task_path(task), class: 'btn btn-info' %>
-            <%= link_to '削除', task, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-danger ms-3' %>
+            <%= link_to_if loyalty.destroy?, '削除', task, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-danger ms-3' do %>
+              <%= link_to '削除', '#', class: 'btn btn-danger  disabled ms-3', 'aria-disabled': 'true' %>
+            <% end %>
           </td>
         </tr>
       <% end %>

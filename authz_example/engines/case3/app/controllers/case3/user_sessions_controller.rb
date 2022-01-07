@@ -3,6 +3,7 @@ require_dependency "case3/application_controller"
 module Case3
   class UserSessionsController < ApplicationController
     layout 'layouts/case3/sessions'
+    skip_before_action :authorize!
     before_action :require_no_user, only: [:new, :create]
     skip_before_action :require_user, only: [:new, :create]
 

@@ -2,7 +2,9 @@
   <legend>
     <h2 class="d-inline">カテゴリー</h2>
     <p class="float-end">
-      <%= link_to '新規作成', new_category_path, class: 'btn btn-success' %>
+      <% if loyalty.create? %>
+        <%= link_to '新規作成', new_category_path, class: 'btn btn-success' %>
+      <% end %>
     </p>
   </legend>
 
@@ -20,8 +22,10 @@
           <th scope="row"><%= c.id %></th>
           <td><%= c.name %></td>
           <td class="text-center">
-            <%= link_to '更新', edit_category_path(c), class: 'btn btn-info' %>
-            <%= link_to_unless c.tasks.exists?, '削除', c, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-danger ms-3' do %>
+            <%= link_to_if loyalty.update?, '更新', edit_category_path(c), class: 'btn btn-info' do %>
+              <%= link_to '更新', '#' , class: 'btn btn-info disabled', 'aria-disabled': 'true' %>
+            <% end %>
+            <%= link_to_if (loyalty.destroy? && !c.tasks.exists?), '削除', c, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-danger ms-3' do %>
               <%= link_to '削除', '#', class: 'btn btn-danger  disabled ms-3', 'aria-disabled': 'true' %>
             <% end %>
           </td>

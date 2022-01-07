@@ -1,6 +1,8 @@
 module Case3
   class ApplicationController < ActionController::Base
+    include Banken
     before_action :require_user
+    before_action :authorize!, except: :index
     helper_method :logged_in?, :current_user_session, :current_user
 
     private

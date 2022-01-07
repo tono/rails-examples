@@ -83,6 +83,8 @@ GEM
       activerecord (>= 5.2, < 7.1)
       activesupport (>= 5.2, < 7.1)
       request_store (~> 1.0)
+    banken (1.0.3)
+      activesupport (>= 3.0.0)
     bindex (0.8.1)
     bootsnap (1.9.3)
       msgpack (~> 1.0)
@@ -212,6 +214,7 @@ PLATFORMS
 
 DEPENDENCIES
   authlogic
+  banken
   bootsnap (>= 1.4.4)
   byebug
   cancancan
