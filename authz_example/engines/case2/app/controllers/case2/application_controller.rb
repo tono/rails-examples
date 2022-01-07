@@ -1,6 +1,9 @@
 module Case2
   class ApplicationController < ActionController::Base
     before_action :require_user
+
+    authorize_resource
+
     helper_method :logged_in?, :current_user_session, :current_user
 
     private

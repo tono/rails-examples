@@ -5,6 +5,7 @@ module Case2
     layout 'layouts/case2/sessions'
     before_action :require_no_user, only: [:new, :create]
     skip_before_action :require_user, only: [:new, :create]
+    skip_authorize_resource
 
     def new
       @user_session = Case2::UserSession.new
