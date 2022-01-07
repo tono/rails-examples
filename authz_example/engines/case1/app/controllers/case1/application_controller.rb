@@ -1,5 +1,6 @@
 module Case1
   class ApplicationController < ActionController::Base
+    include ::Pundit
     before_action :require_user
     helper_method :logged_in?, :current_user_session, :current_user
 

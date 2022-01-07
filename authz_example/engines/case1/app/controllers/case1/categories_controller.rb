@@ -16,15 +16,18 @@ module Case1
     # GET /categories/new
     def new
       @category = Category.new
+      authorize @category
     end
 
     # GET /categories/1/edit
     def edit
+      authorize @category
     end
 
     # POST /categories
     def create
       @category = Category.new(category_params)
+      authorize @category
 
       if @category.save
         redirect_to action: :index, notice: 'Category was successfully created.'
@@ -35,6 +38,7 @@ module Case1
 
     # PATCH/PUT /categories/1
     def update
+      authorize @category
       if @category.update(category_params)
         redirect_to action: :index, notice: 'Category was successfully updated.'
       else
@@ -44,6 +48,7 @@ module Case1
 
     # DELETE /categories/1
     def destroy
+      authorize @category
       @category.destroy
       redirect_to categories_url, notice: 'Category was successfully destroyed.'
     end

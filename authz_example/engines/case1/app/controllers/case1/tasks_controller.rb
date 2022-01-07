@@ -44,6 +44,7 @@ module Case1
 
     # DELETE /tasks/1
     def destroy
+      authorize @task
       @task.destroy
       redirect_to tasks_url, notice: 'Task was successfully destroyed.'
     end
